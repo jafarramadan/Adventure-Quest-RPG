@@ -7,8 +7,8 @@ namespace AdventureQuestRPG
     {
         static void Main(string[] args)
         {
-            Player player = new Player();
-            Monster zombie = new Zombie();
+            Player player = new Player("Hero");
+            Monster zombie = new Zombie("Zombie");
             BattleSystem battleSystem = new BattleSystem();
 
             Console.WriteLine("The adventure begins!");
