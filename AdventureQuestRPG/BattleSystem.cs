@@ -8,9 +8,20 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
+<<<<<<< Updated upstream
     public class BattleSystem
     {
         public int Attack(Characters attacker, Characters target)
+=======
+
+    public class BattleSystem 
+    {
+       
+
+    
+        public int Attack(Characters attacker, Characters target)
+
+>>>>>>> Stashed changes
         {
             int damage = attacker.AttackPower - target.Defense;
             if (damage < 0) damage = 0;
