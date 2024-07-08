@@ -3,125 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
 namespace AdventureQuestRPG
 {
     public class Adventure
     {
-<<<<<<< HEAD
-        public BattleSystem battleSystem;
-        public Player player;
-        List<Monster> monsters;
-        string currentLocation = "amman";
-=======
+
         private Player player;
         public List<Monster> monsters;
         private string currentLocation;
         private Zombie zombie;
         private Random _random;
         private List<string> location = new List<string> { "Town", "Forest", "Cave", "Mountain" };
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
+
 
         public Adventure(Player player)
         {
             this.player = player;
-<<<<<<< HEAD
-            battleSystem = new BattleSystem();
-            monsters = new List<Monster> { new Zombie(), new BossMonster() };
-        }
-
-        public void startAdventure() {
-
-            
-            while (true)
-            {
-                Console.WriteLine($"\nYou are currently in {currentLocation} location");
-                Console.WriteLine("choose a number from availble action : \n1-discover a new location \n2-attack a monster \n3-end the game \n");
-                string choice = Console.ReadLine().ToLower();
-                select(choice);
-                if (player.Health <= 0)
-                {
-                    Console.WriteLine("Game over!");
-                    player.Health = 100;
-                    break;
-                }
-               
-            }
-            Console.WriteLine("Adventure complete!");
-
-        }
-
-        public void select(string choice)
-        {
-            
-            
-            switch (choice)
-            {
-                case "1":
-                    discoverLocation();
-                    break;
-                case "2":
-                    randomMonsters();
-                    break;
-                case "3":
-                    endGame();
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-
-            }
-        }
-
-        public void randomMonsters()
-        {
-           
-            Random  random = new Random();
-            Monster enemy = monsters[random.Next(monsters.Count)];
-            battleSystem.StartBattle(player, enemy);
-
-        }
-
-        public void discoverLocation()
-        {
-            List<string> list = new List<string>() { "1-irbid", "2-aqaba", "3-jarash" };
-            Console.WriteLine("choose locatin ,just write the number");
-            for (int i = 0; i < list.Count; i++)
-            {
-                Console.WriteLine(list[i]);
-            }
-            string num = Console.ReadLine();
-            switch (num)
-            {
-                case "1":
-                    currentLocation = "irbid";
-                    break;
-                case "2":
-                    currentLocation = "aqaba";
-                    break;
-                case "3":
-                    currentLocation = "jarash";
-                    break;
-                default:
-                    Console.WriteLine("Invalid location. Please try again.");
-                    discoverLocation();
-                    return;
-
-            }
-            startAdventure();
-        }
-        public void endGame()
-        {
-            Console.WriteLine("the game ended");
-            Environment.Exit(0);
-        }
-
-
-=======
             monsters = new List<Monster>()
             {
             new Zombie("Zombie"),
@@ -162,6 +59,9 @@ namespace AdventureQuestRPG
                         Move(location);
                         break;
                     case "3":
+                        player.inventory.Display(player);
+                        break;
+                    case "4":
                         isRun = false;
                         break;
                     default:
@@ -192,6 +92,8 @@ namespace AdventureQuestRPG
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"\nYou defeated the {monster.Name}!");
                     Console.ResetColor();
+                    DropHandleItem();
+                   
                 }
                 return result;
             }
@@ -225,8 +127,48 @@ namespace AdventureQuestRPG
                 Console.WriteLine("Invalid choise");
                 return currentLocation;
             }
-        } 
-         
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
+        }
+        public void DropHandleItem()
+        {
+
+            Inventory inventory = new Inventory();
+
+            Item dropped;
+            int itemType = _random.Next(1, 4);
+            switch (itemType)
+            {
+                case 1:
+                    dropped = new Weapon { ItemName = "Sword", AttackBonus = 10, Description = "A sharp sword." };
+                    break;
+                case 2:
+                    dropped = new Armor { ItemName = "Shield", DefeanseArmor = 15, Description = "A sturdy shield." };
+                    break;
+                case 3:
+                    dropped = new Potion { ItemName = "Health Potion", HealthPotion = 20, Description = "Restores health." };
+                    break;
+                default:
+                    dropped = null;
+                    break;
+            }
+            if (dropped is Item)
+            {
+                bool isExist = player.inventory.items.Any(item => item.ItemName == dropped.ItemName);
+
+                if (!isExist)
+                {
+                    player.inventory.AddItem(dropped);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"\nYou found a {dropped.ItemName}!\n");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"\nYou have a {dropped.ItemName} You can use it!\n");
+                    Console.ResetColor();
+                }
+            }
+        }
+    
     }
 }

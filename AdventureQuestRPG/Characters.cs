@@ -6,25 +6,17 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-<<<<<<< HEAD
-    public class Characters : IBattleStates
-=======
+
     public class Player : IBattleStates
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
+
     {
         public string? Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
-<<<<<<< HEAD
 
-        public int OriginHealth { get; set; }
-
-        public void PrintName()
-=======
         public Inventory inventory { get; set; }
         public Player()
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
         {
             inventory = new Inventory();
         }
@@ -37,18 +29,30 @@ namespace AdventureQuestRPG
             Defense = 10;
             //OriginHealth= 100;  
         }
-
-<<<<<<< HEAD
-    public abstract class Monster : Characters
-    {
-        public Monster(string name ,int health,int attackPower,int defense)
+        public void UseItem(Item item)
         {
-            Name = name;
-            Health = health;
-            AttackPower = attackPower;
-            Defense = defense;
-           
-=======
+
+            if (item is Potion potion)
+            {
+                Health += potion.HealthPotion;
+                Console.WriteLine($"\nYou used a {item.ItemName} and gained {potion.HealthPotion} health.\n");
+
+            }
+            else if (item is Weapon weapon)
+            {
+                AttackPower += weapon.AttackBonus;
+                Console.WriteLine($"\nYou are now equipped {weapon.ItemName} and gained {weapon.AttackBonus} attack power\n");
+            }
+            else if (item is Armor armor)
+            {
+                Defense += armor.DefeanseArmor;
+            }
+            inventory.RemoveItem(item);
+        }
+
+    
+}
+
 
         public abstract class Monster : IBattleStates
         {
@@ -70,24 +74,10 @@ namespace AdventureQuestRPG
             {
                 Health = MaxHealth;
             }
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
+
         }
 
-<<<<<<< HEAD
-    public class Zombie : Monster
-    {
-        public Zombie() : base("zombie",100,20,10)
-        {
-            
-        }
-    }
 
-    public class BossMonster : Monster
-    {
-        public BossMonster() : base("BossMonster", 150, 50, 25)
-        {
-
-=======
         public class Zombie : Monster
         {
             public Zombie(string name) : base(name) { }
@@ -101,7 +91,7 @@ namespace AdventureQuestRPG
                 AttackPower = 40;
                 Defense = 20;
             }
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
+
         }
-    }
+    
 }

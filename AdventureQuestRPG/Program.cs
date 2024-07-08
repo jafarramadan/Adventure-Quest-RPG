@@ -7,13 +7,7 @@ namespace AdventureQuestRPG
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            Player player=new Player("jafar");
-            Adventure adventure = new Adventure(player);
-            adventure.startAdventure();
 
-                   }
-=======
             try
             {
                 Player player = new Player
@@ -31,6 +25,6 @@ namespace AdventureQuestRPG
             }
             catch (Exception ex) { Console.WriteLine($"An error occurred: {ex.Message}"); }
         }
->>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
+
     }
 }
