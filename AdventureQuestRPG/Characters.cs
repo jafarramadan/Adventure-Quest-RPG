@@ -12,10 +12,9 @@ namespace AdventureQuestRPG
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
-        public Inventory inventory { get; set; }
         public Player()
         {
-            inventory = new Inventory();
+           
         }
 
         public void RestPlayer()
