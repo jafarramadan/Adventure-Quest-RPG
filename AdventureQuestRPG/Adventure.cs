@@ -43,7 +43,7 @@ namespace AdventureQuestRPG
                 Console.Write($"{currentLocation}\n");
                 Console.ResetColor();
                 Console.WriteLine("Choose an action:\n" +
-                    " 1) Adventure the Monster.\n" +
+                    " 1) Adventure  the Monster.\n" +
                     " 2) Move to the next Town.\n" +
                     " 3) View Inventory that you have.\n" +
                     " 4) Exit the Game.");
@@ -79,7 +79,6 @@ namespace AdventureQuestRPG
             {
                 BattleSystem battle = new BattleSystem();
                 Monster monster = monsters[encountersMonsters];
-               
                 monster.RestHealthMonster();
 
                 Console.WriteLine($"You Attack a {monster.Name}");
