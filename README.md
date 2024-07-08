@@ -1,10 +1,16 @@
 # Adventure Quest RPG
 
-Adventure Quest RPG is a simple console-based role-playing game (RPG) written in C#. Players engage in battles with monsters, taking turns to attack until one is defeated.
+AdventureQuestRPG is a console-based RPG game where players embark on adventurous quests, battle monsters, and explore different locations. 
+
+
+### Features
+
+- **Battle System**: Engage in battles with various monsters.
+- **Inventory Management**: Collect and use items to boost your stats.
+- **Multiple Locations**: Explore different areas such as Town, Forest, Cave, and Mountain.
+- **Boss Battles**: Face challenging boss monsters.
 
 ## Classes
-
-### AdventureQuestRPG
 
 - **Program**
   - Entry point of the application. Initializes a player and a zombie, then starts the battle.
@@ -23,6 +29,19 @@ Adventure Quest RPG is a simple console-based role-playing game (RPG) written in
 
 - **Zombie**
   - Inherits from `Monster`. Represents a specific type of monster.
+
+- **BossMonster**
+  - A more powerful type of monster.
+ 
+- **Inventory**			
+  - Manages the player's inventory of items.
+
+- **IBattleStates**
+  - Interface that defines the basic stats for entities that can engage in battle.
+ 
+- **Item**
+  - Abstract class for items in the game, with specific subclasses for Weapons, Armor, and Potions.
+
 
 ## How to Run
 
