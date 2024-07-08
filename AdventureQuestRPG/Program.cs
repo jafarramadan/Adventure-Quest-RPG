@@ -7,12 +7,10 @@ namespace AdventureQuestRPG
     {
         static void Main(string[] args)
         {
-            Player player = new Player("Hero");
-            Monster zombie = new Zombie("Zombie");
-            BattleSystem battleSystem = new BattleSystem();
+            Player player=new Player("jafar");
+            Adventure adventure = new Adventure(player);
+            adventure.startAdventure();
 
-            Console.WriteLine("The adventure begins!");
-            battleSystem.StartBattle(player, zombie);
-        }
+                   }
     }
 }

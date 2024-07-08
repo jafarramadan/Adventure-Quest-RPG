@@ -8,20 +8,14 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-<<<<<<< Updated upstream
+
     public class BattleSystem
     {
-        public int Attack(Characters attacker, Characters target)
-=======
-
-    public class BattleSystem 
-    {
-       
+        
 
     
-        public int Attack(Characters attacker, Characters target)
-
->>>>>>> Stashed changes
+        public int Attack(IBattleStates attacker, IBattleStates target)
+            
         {
             int damage = attacker.AttackPower - target.Defense;
             if (damage < 0) damage = 0;
@@ -45,7 +39,9 @@ namespace AdventureQuestRPG
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
                 {
-                    Console.WriteLine("\nGeart! You defeated the monster!");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\nGreat! You defeated the {enemy.Name}!");
+                    Console.ResetColor();
                     return player.Name;
                 }
 
@@ -54,7 +50,9 @@ namespace AdventureQuestRPG
                 Attack(enemy, player);
                 if (player.Health <= 0)
                 {
-                    Console.WriteLine("You were defeated by the monster.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"You were defeated by the {enemy.Name}.");
+                    Console.ResetColor();
                     return enemy.Name;
                 }
             }

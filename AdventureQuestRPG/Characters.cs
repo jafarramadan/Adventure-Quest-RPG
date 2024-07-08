@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-    public class Characters
+    public class Characters : IBattleStates
     {
         public string? Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
+
+        public int OriginHealth { get; set; }
 
         public void PrintName()
         {
@@ -27,25 +29,35 @@ namespace AdventureQuestRPG
             Health = 100;
             AttackPower = 20;
             Defense = 10;
+            //OriginHealth= 100;  
         }
     }
 
     public abstract class Monster : Characters
     {
-        public Monster(string name)
+        public Monster(string name ,int health,int attackPower,int defense)
         {
             Name = name;
-            Health = 100;
-            AttackPower = 15;
-            Defense = 10;
+            Health = health;
+            AttackPower = attackPower;
+            Defense = defense;
+           
         }
     }
 
     public class Zombie : Monster
     {
-        public Zombie(string name) : base(name)
+        public Zombie() : base("zombie",100,20,10)
         {
-            Name = name;
+            
+        }
+    }
+
+    public class BossMonster : Monster
+    {
+        public BossMonster() : base("BossMonster", 150, 50, 25)
+        {
+
         }
     }
 }
