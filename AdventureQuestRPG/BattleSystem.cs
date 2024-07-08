@@ -11,11 +11,29 @@ namespace AdventureQuestRPG
 
     public class BattleSystem
     {
+<<<<<<< HEAD
         
 
     
         public int Attack(IBattleStates attacker, IBattleStates target)
             
+=======
+<<<<<<< HEAD
+        public int Attack(IBattleStates attacker, IBattleStates target)
+=======
+        public int Attack(Characters attacker, Characters target)
+=======
+
+    public class BattleSystem 
+    {
+       
+
+    
+        public int Attack(Characters attacker, Characters target)
+
+>>>>>>> Stashed changes
+>>>>>>> master
+>>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
         {
             int damage = attacker.AttackPower - target.Defense;
             if (damage < 0) damage = 0;
@@ -30,6 +48,7 @@ namespace AdventureQuestRPG
 
         public string StartBattle(Player player, Monster enemy)
         {
+            Console.WriteLine("Battle started!");
             while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -39,9 +58,12 @@ namespace AdventureQuestRPG
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
                 {
+<<<<<<< HEAD
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"\nGreat! You defeated the {enemy.Name}!");
                     Console.ResetColor();
+=======
+>>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
                     return player.Name;
                 }
 
@@ -50,9 +72,16 @@ namespace AdventureQuestRPG
                 Attack(enemy, player);
                 if (player.Health <= 0)
                 {
+<<<<<<< HEAD
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"You were defeated by the {enemy.Name}.");
                     Console.ResetColor();
+=======
+                    Console.ForegroundColor = ConsoleColor.Blue;   
+                    Console.WriteLine("You were defeated by the monster.");
+                    Console.ResetColor();
+                    player.RestPlayer();
+>>>>>>> 1c72a2afbb38fb6888a694b98ab8c5844ae9932a
                     return enemy.Name;
                 }
             }
