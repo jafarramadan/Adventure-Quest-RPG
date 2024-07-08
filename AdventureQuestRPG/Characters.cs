@@ -6,46 +6,62 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-    public class Characters
+    public class Player : IBattleStates
     {
         public string? Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
-
-        public void PrintName()
+        public Inventory inventory { get; set; }
+        public Player()
         {
-            Console.WriteLine($"Player name: {Name}");
+            inventory = new Inventory();
         }
-    }
 
-    public class Player : Characters
-    {
-        public Player(string name)
+        public void RestPlayer()
         {
-            Name = name;
+            Name = "Hero";
             Health = 100;
-            AttackPower = 20;
+            AttackPower = 30;
             Defense = 10;
         }
-    }
 
-    public abstract class Monster : Characters
-    {
-        public Monster(string name)
+
+        public abstract class Monster : IBattleStates
         {
-            Name = name;
-            Health = 100;
-            AttackPower = 15;
-            Defense = 10;
+            public string? Name { get; set; }
+            public int Health { get; set; }
+            public int MaxHealth { get; set; }
+            public int AttackPower { get; set; }
+            public int Defense { get; set; }
+            public Monster(string name)
+            {
+                Name = name;
+                Health = 100;
+                MaxHealth = 100;
+                AttackPower = 15;
+                Defense = 10;
+            }
+
+            public void RestHealthMonster()
+            {
+                Health = MaxHealth;
+            }
         }
-    }
 
-    public class Zombie : Monster
-    {
-        public Zombie(string name) : base(name)
+        public class Zombie : Monster
         {
-            Name = name;
+            public Zombie(string name) : base(name) { }
+        }
+
+        public class BossMonster : Monster
+        {
+            public BossMonster() : base("Boss Monster")
+            {
+                Health = 100;
+                AttackPower = 40;
+                Defense = 20;
+            }
         }
     }
 }

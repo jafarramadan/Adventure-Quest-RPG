@@ -11,6 +11,9 @@ namespace AdventureQuestRPG
 <<<<<<< Updated upstream
     public class BattleSystem
     {
+<<<<<<< HEAD
+        public int Attack(IBattleStates attacker, IBattleStates target)
+=======
         public int Attack(Characters attacker, Characters target)
 =======
 
@@ -22,6 +25,7 @@ namespace AdventureQuestRPG
         public int Attack(Characters attacker, Characters target)
 
 >>>>>>> Stashed changes
+>>>>>>> master
         {
             int damage = attacker.AttackPower - target.Defense;
             if (damage < 0) damage = 0;
@@ -36,6 +40,7 @@ namespace AdventureQuestRPG
 
         public string StartBattle(Player player, Monster enemy)
         {
+            Console.WriteLine("Battle started!");
             while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -45,7 +50,6 @@ namespace AdventureQuestRPG
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
                 {
-                    Console.WriteLine("\nGeart! You defeated the monster!");
                     return player.Name;
                 }
 
@@ -54,7 +58,10 @@ namespace AdventureQuestRPG
                 Attack(enemy, player);
                 if (player.Health <= 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;   
                     Console.WriteLine("You were defeated by the monster.");
+                    Console.ResetColor();
+                    player.RestPlayer();
                     return enemy.Name;
                 }
             }
