@@ -121,7 +121,7 @@ namespace AdventureQuestRPG
                 Console.WriteLine("Invalid choise");
                 return currentLocation;
             }
-        }
-
+        } 
+         
     }
 }

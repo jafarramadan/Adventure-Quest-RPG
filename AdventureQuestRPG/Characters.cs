@@ -12,10 +12,10 @@ namespace AdventureQuestRPG
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
-        public Inventory inventory { get; set; }    
+        public Inventory inventory { get; set; }
         public Player()
         {
-            inventory = new Inventory();    
+            inventory = new Inventory();
         }
 
         public void RestPlayer()
@@ -27,43 +27,41 @@ namespace AdventureQuestRPG
         }
 
 
-
-    }
-
-    public abstract class Monster : IBattleStates
-    {
-        public string? Name { get; set; }
-        public int Health { get; set; }
-        public int MaxHealth {get; set;}
-        public int AttackPower { get; set; }
-        public int Defense { get; set; }
-        public Monster(string name)
+        public abstract class Monster : IBattleStates
         {
-            Name = name;
-            Health = 100;
-            MaxHealth = 100;
-            AttackPower = 15;
-            Defense = 10;
+            public string? Name { get; set; }
+            public int Health { get; set; }
+            public int MaxHealth { get; set; }
+            public int AttackPower { get; set; }
+            public int Defense { get; set; }
+            public Monster(string name)
+            {
+                Name = name;
+                Health = 100;
+                MaxHealth = 100;
+                AttackPower = 15;
+                Defense = 10;
+            }
+
+            public void RestHealthMonster()
+            {
+                Health = MaxHealth;
+            }
         }
 
-        public void RestHealthMonster()
+        public class Zombie : Monster
         {
-            Health = MaxHealth;
+            public Zombie(string name) : base(name) { }
         }
-    }
 
-    public class Zombie : Monster
-    {
-        public Zombie(string name) : base(name) { }
-    }
-
-    public class BossMonster : Monster
-    {
-        public BossMonster(): base("Boss Monster")
+        public class BossMonster : Monster
         {
-            Health = 100;
-            AttackPower = 40;
-            Defense = 20;
+            public BossMonster() : base("Boss Monster")
+            {
+                Health = 100;
+                AttackPower = 40;
+                Defense = 20;
+            }
         }
     }
 }

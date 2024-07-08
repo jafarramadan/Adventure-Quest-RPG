@@ -10,6 +10,6 @@ namespace AdventureQuestRPG
 {
     public class Inventory
     {
-       
+      
     }
 }
