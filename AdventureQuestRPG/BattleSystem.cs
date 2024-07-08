@@ -8,14 +8,9 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-
-
     public class BattleSystem
     {
-    
         public int Attack(IBattleStates attacker, IBattleStates target)
-            
-
         {
             int damage = attacker.AttackPower - target.Defense;
             if (damage < 0) damage = 0;
@@ -61,5 +56,4 @@ namespace AdventureQuestRPG
             return "";
         }
     }
-
 }
