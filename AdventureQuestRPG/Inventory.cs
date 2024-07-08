@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,7 +20,6 @@ namespace AdventureQuestRPG
             {
                 items.Add(AddItems);
                 Console.WriteLine($"{AddItems.ItemName} added to Inventory");
-
             }
             public void RemoveItem(Item remove)
             {

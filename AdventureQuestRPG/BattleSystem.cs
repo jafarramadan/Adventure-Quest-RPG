@@ -11,7 +11,6 @@ namespace AdventureQuestRPG
     public class BattleSystem
     {
         public int Attack(IBattleStates attacker, IBattleStates target)
-
         {
             int damage = attacker.AttackPower - target.Defense;
             if (damage < 0) damage = 0;
@@ -36,6 +35,7 @@ namespace AdventureQuestRPG
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
                 {
+
                     return player.Name;
                 }
 
@@ -44,15 +44,16 @@ namespace AdventureQuestRPG
                 Attack(enemy, player);
                 if (player.Health <= 0)
                 {
+
                     Console.ForegroundColor = ConsoleColor.Blue;   
                     Console.WriteLine("You were defeated by the monster.");
                     Console.ResetColor();
                     player.RestPlayer();
+
                     return enemy.Name;
                 }
             }
             return "";
         }
     }
-
 }

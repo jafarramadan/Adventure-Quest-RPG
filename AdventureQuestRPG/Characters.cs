@@ -26,10 +26,8 @@ namespace AdventureQuestRPG
             AttackPower = 30;
             Defense = 10;
         }
-
         public void UseItem(Item item)
         {
-
             if (item is Potion potion)
             {
                 Health += potion.HealthPotion;
@@ -47,7 +45,6 @@ namespace AdventureQuestRPG
             }
             inventory.RemoveItem(item);
         }
-
     }
 
     public abstract class Monster : IBattleStates
@@ -86,5 +83,4 @@ namespace AdventureQuestRPG
             Defense = 20;
         }
     }
-
 }

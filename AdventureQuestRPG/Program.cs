@@ -7,6 +7,7 @@ namespace AdventureQuestRPG
     {
         static void Main(string[] args)
         {
+
             try
             {
                 Player player = new Player
@@ -24,5 +25,6 @@ namespace AdventureQuestRPG
             }
             catch (Exception ex) { Console.WriteLine($"An error occurred: {ex.Message}"); }
         }
+
     }
 }

@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 namespace AdventureQuestRPG
 {
     public abstract class Item
-    {
-        
-        public string ItemName { get; set; } = string.Empty;    
-        public string Description { get; set; } = string.Empty;
-        public Item(string ItemName, string Description) {
-            Description = 
-        }
+{
+        public string ItemName { get; set; }
+        public string Description { get; set; }
     }
 
     public class Weapon : Item
@@ -29,3 +25,5 @@ namespace AdventureQuestRPG
         public int HealthPotion { get; set; }
     }
 }
+
+
