@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
+
     public class Player : IBattleStates
+
     {
         public string? Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
+
+        public Inventory inventory { get; set; }
         public Player()
         {
-           
+            inventory = new Inventory();
         }
 
         public void RestPlayer()
@@ -23,7 +27,31 @@ namespace AdventureQuestRPG
             Health = 100;
             AttackPower = 30;
             Defense = 10;
+            //OriginHealth= 100;  
         }
+        public void UseItem(Item item)
+        {
+
+            if (item is Potion potion)
+            {
+                Health += potion.HealthPotion;
+                Console.WriteLine($"\nYou used a {item.ItemName} and gained {potion.HealthPotion} health.\n");
+
+            }
+            else if (item is Weapon weapon)
+            {
+                AttackPower += weapon.AttackBonus;
+                Console.WriteLine($"\nYou are now equipped {weapon.ItemName} and gained {weapon.AttackBonus} attack power\n");
+            }
+            else if (item is Armor armor)
+            {
+                Defense += armor.DefeanseArmor;
+            }
+            inventory.RemoveItem(item);
+        }
+
+    
+}
 
 
         public abstract class Monster : IBattleStates
@@ -46,7 +74,9 @@ namespace AdventureQuestRPG
             {
                 Health = MaxHealth;
             }
+
         }
+
 
         public class Zombie : Monster
         {
@@ -61,6 +91,7 @@ namespace AdventureQuestRPG
                 AttackPower = 40;
                 Defense = 20;
             }
+
         }
-    }
+    
 }
